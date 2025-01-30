@@ -37,17 +37,55 @@ const App = () => {
             display: "flex",
             justifyContent: "space-between",
             alignItems: "center",
+            flexWrap: "wrap",
           }}
         >
-          <img src={logo} alt="Logo" height={60} />
-          <Title level={3} style={{ color: "#1890ff", margin: 0 }}>
-            Universe
+          <img
+            src={logo}
+            alt="Logo"
+            style={{
+              height: "60px",
+              maxWidth: "100%",
+            }}
+          />
+          <Title
+            level={4}
+            style={{
+              color: "#1890ff",
+              margin: 0,
+              fontSize: "1.5rem",
+              textAlign: "center",
+            }}
+          >
+            Bringing the World Closer to You
           </Title>
         </div>
+
+        {/* ✅ Media Query for Mobile */}
+        <style>
+          {`
+      @media (max-width: 768px) {
+        .ant-layout-header {
+          padding: 10px 20px !important;
+          height: auto !important;
+        }
+
+        img {
+          height: 40px !important;
+        }
+
+        h4 {
+          font-size: 1.2rem !important;
+          text-align: center !important;
+        }
+      }
+    `}
+        </style>
       </Header>
 
       {/* Hero Section */}
       <Content
+        className="hero"
         style={{
           padding: "80px 50px",
           background: "linear-gradient(to bottom, #1890ff, #001529)",
@@ -71,7 +109,7 @@ const App = () => {
               </Title>
               <Text style={{ fontSize: "20px", color: "#e0e0e0" }}>
                 Book your dream vacation or business trip through our trusted
-                TravelStart platform.
+                platform.
               </Text>
               <br />
               <br />
@@ -104,6 +142,7 @@ const App = () => {
           <Col xs={24} md={12}>
             <motion.img
               src={Aeroplane}
+              className="hero-image"
               alt="Travel Banner"
               style={{
                 width: "100%",
@@ -116,6 +155,38 @@ const App = () => {
             />
           </Col>
         </Row>
+
+        {/* ✅ Media Query for Mobile */}
+        <style>
+          {`
+            @media (max-width: 768px) {
+              .ant-layout-content {
+                padding: 40px 20px !important;
+              }
+
+              h1 {
+                font-size: 36px !important;
+              }
+
+              p {
+                font-size: 18px !important;
+              }
+
+              .hero {
+                  min-height: 60vh !important;
+              }
+
+              .hero-image {
+                height: 200px !important;
+              }
+
+              button {
+                font-size: 18px !important;
+                padding: 12px 30px !important;
+              }
+            }
+          `}
+        </style>
       </Content>
 
       {/* Holiday, Hotel, Flights Section */}
@@ -143,7 +214,30 @@ const App = () => {
           <Col xs={24} sm={12} md={8}>
             <Card
               hoverable
-              cover={<img alt="Holiday" src={Holiday} />}
+              cover={<img alt="Flight" className="card-img" src={Flights} />}
+              style={{
+                boxShadow: "0 4px 8px rgba(0, 0, 0, 0.2)",
+                borderRadius: "8px",
+              }}
+            >
+              <Meta
+                title="Flights"
+                description="Book affordable flights to your favorite destinations with ease."
+              />
+              <Button
+                type="link"
+                href="https://www.travelstart.com.ng/?affId=220029&utm_source=affiliate&utm_medium=220029"
+                target="_blank"
+                style={{ marginTop: "10px", color: "#1890ff" }}
+              >
+                Book Now
+              </Button>
+            </Card>
+          </Col>
+          <Col xs={24} sm={12} md={8}>
+            <Card
+              hoverable
+              cover={<img alt="Holiday" className="card-img" src={Holiday} />}
               style={{
                 boxShadow: "0 4px 8px rgba(0, 0, 0, 0.2)",
                 borderRadius: "8px",
@@ -166,7 +260,7 @@ const App = () => {
           <Col xs={24} sm={12} md={8}>
             <Card
               hoverable
-              cover={<img alt="Hotel" src={Hotel} />}
+              cover={<img alt="Hotel" className="card-img" src={Hotel} />}
               style={{
                 boxShadow: "0 4px 8px rgba(0, 0, 0, 0.2)",
                 borderRadius: "8px",
@@ -186,30 +280,35 @@ const App = () => {
               </Button>
             </Card>
           </Col>
-          <Col xs={24} sm={12} md={8}>
-            <Card
-              hoverable
-              cover={<img alt="Flight" src={Flights} />}
-              style={{
-                boxShadow: "0 4px 8px rgba(0, 0, 0, 0.2)",
-                borderRadius: "8px",
-              }}
-            >
-              <Meta
-                title="Flights"
-                description="Book affordable flights to your favorite destinations with ease."
-              />
-              <Button
-                type="link"
-                href="https://www.travelstart.com.ng/?affId=220029&utm_source=affiliate&utm_medium=220029"
-                target="_blank"
-                style={{ marginTop: "10px", color: "#1890ff" }}
-              >
-                Book Now
-              </Button>
-            </Card>
-          </Col>
         </Row>
+
+        {/* ✅ Media Query for Mobile */}
+        <style>
+          {`
+            @media (max-width: 768px) {
+              .ant-layout-content {
+                padding: 40px 20px !important;
+              }
+
+              h1 {
+                font-size: 36px !important;
+              }
+
+              p {
+                font-size: 18px !important;
+              }
+
+              .card-img {
+                height: 200px !important;
+              }
+
+              button {
+                font-size: 18px !important;
+                padding: 12px 30px !important;
+              }
+            }
+          `}
+        </style>
       </Content>
 
       {/* Reach Out Section */}
@@ -326,7 +425,12 @@ const App = () => {
             <Card
               hoverable
               cover={
-                <img alt="paris" src={Paris} style={{ height: "355px" }} />
+                <img
+                  alt="paris"
+                  src={Paris}
+                  className="card-img"
+                  style={{ height: "355px" }}
+                />
               }
               style={{
                 boxShadow: "0 4px 8px rgba(0, 0, 0, 0.2)",
@@ -339,7 +443,7 @@ const App = () => {
           <Col xs={24} sm={12} md={8}>
             <Card
               hoverable
-              cover={<img alt="dubai" src={Dubai} />}
+              cover={<img alt="dubai" className="card-img" src={Dubai} />}
               style={{
                 boxShadow: "0 4px 8px rgba(0, 0, 0, 0.2)",
                 borderRadius: "8px",
@@ -351,7 +455,7 @@ const App = () => {
           <Col xs={24} sm={12} md={8}>
             <Card
               hoverable
-              cover={<img alt="london" src={London} />}
+              cover={<img alt="london" className="card-img" src={London} />}
               style={{
                 boxShadow: "0 4px 8px rgba(0, 0, 0, 0.2)",
                 borderRadius: "8px",
@@ -359,6 +463,68 @@ const App = () => {
             >
               <Meta title="London" description="Big Ben, Buckingham Palace" />
             </Card>
+          </Col>
+        </Row>
+
+        {/* ✅ Media Query for Mobile */}
+        <style>
+          {`
+            @media (max-width: 768px) {
+              .ant-layout-content {
+                padding: 40px 20px !important;
+              }
+
+              h1 {
+                font-size: 36px !important;
+              }
+
+              p {
+                font-size: 18px !important;
+              }
+
+              .card-img {
+                height: 200px !important;
+              }
+
+              button {
+                font-size: 18px !important;
+                padding: 12px 30px !important;
+              }
+            }
+          `}
+        </style>
+      </Content>
+
+      {/* contact us using mail and contact number */}
+      <Content
+        style={{
+          padding: "50px",
+          backgroundColor: "#fff",
+          textAlign: "center",
+        }}
+      >
+        <Title style={{ color: "#1890ff" }}>Contact Us</Title>
+        <Text style={{ fontSize: "16px", color: "#595959" }}>
+          Reach out to us for inquiries, bookings, or support.
+        </Text>
+        <br />
+        <br />
+        <Row justify="center" align="middle" gutter={[16, 16]}>
+          <Col xs={24} sm={12} md={8}>
+            <Title level={4}>Email Us</Title>
+            <Text>
+              <a href="mailto:expressuniversal@yahoo.com">
+                expressuniversal@yahoo.com
+              </a>
+            </Text>
+          </Col>
+          <Col xs={24} sm={12} md={8}>
+            <Title level={4}>Call Us</Title>
+            <Text>Phone Number: +234 803 344 2160</Text>
+          </Col>
+          <Col xs={24} sm={12} md={8}>
+            <Title level={4}>Chat Us</Title>
+            <Text>Whatsapp Number: +234 906 004 5662</Text>
           </Col>
         </Row>
       </Content>
